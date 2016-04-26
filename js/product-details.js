@@ -27,7 +27,7 @@ $(document).ready(function(){
         $("#rate").val(value);
     });
     function myFunction(){
-        $("#email_form").valid();
+       // $("#email_form").valid();
         alert("Comments take upto 48 hours to be reviewed before being posted to the site.");
     };
      $("#email_form").validate({
