@@ -72,12 +72,12 @@ $(document).ready(function(){
                  required: "Please enter your comment here."  
              }
         }
-     });    
-});
-
-$('.btn').on('click',"button", function() {
-    $("#email_form").valid();
-    alert("Comments take upto 48 hours to be reviewed before being posted to the site.");
+     });   
+     
+    $('.btn').on('click',"button", function() {
+        $("#email_form").valid();
+        alert("Comments take upto 48 hours to be reviewed before being posted to the site.");
+    });
 });
 
 function goBack() {
