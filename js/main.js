@@ -22,16 +22,18 @@ $(document).ready(function(){
      var $categoryId = $("#category");    
         
      var url = getUrl(page1);
-     //var newUrl = getUrl(page2);
-     console.log("url is " + url);
      addData(url);
-     //addData(newUrl);
+     
+     var newUrl = getUrl(page2);
+     //console.log("url is " + url);
+     if(url !== "https://parkland-csc175.github.io/csc175data/bestbuy/categories-list.json")
+        addData(newUrl);
      
     $("#category").on("click", "a", function(event){    
         var $linkClicked = $(event.target);    
-        console.log($linkClicked);
+        //console.log($linkClicked);
         var $dataId = $linkClicked.data("id");
-        console.log($dataId);
+        //console.log($dataId);
         sessionStorage.setItem("dataId", $dataId);
         //this.href = "subCategories-list.html";
         this.href = "product-list.html"
@@ -39,7 +41,7 @@ $(document).ready(function(){
     
     function getUrl(page){
         var api = apiKey || localStorage.getItem("BEST_BUY_API_KEY");
-        console.log("apiKey is : " + api);
+        //console.log("apiKey is : " + api);
         if(api !== "null")
             return page + "&apiKey=" + api;
         else
@@ -48,9 +50,9 @@ $(document).ready(function(){
     
     function addData(url){
         $.get(url, function(result){
-            console.log(result);
+            //console.log(result);
             result.categories.forEach(function(post){
-                console.log(post);             
+                //console.log(post);             
                 var $li = $("<li></li>");
                 var $a = $("<a />").attr('href', "#").attr("data-id", post.id).text(post.name);
                 $li.append($a);
@@ -59,3 +61,5 @@ $(document).ready(function(){
         });
     }
 });        
+
+//http://parkland-csc175.github.io/SP16-dsinghania-finalproject/

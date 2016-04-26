@@ -7,9 +7,9 @@ $(document).ready(function(){
      var $divprice = $("#price");
      var $name = $("#name");
      $.get(href, function(result){
-         console.log(result);
-         console.log("Name- " + result.products[0].name + " Regular Price- " + result.products[0].regularPrice);
-         console.log("Brand- " + result.products[0].manufacturer + " Sale Price- " + result.products[0].salePrice);  
+         //console.log(result);
+         //console.log("Name- " + result.products[0].name + " Regular Price- " + result.products[0].regularPrice);
+         //console.log("Brand- " + result.products[0].manufacturer + " Sale Price- " + result.products[0].salePrice);  
          $(".img-responsive").attr("src", result.products[0].image);
          var $li = $("<li></li>");
          var prodName = document.createTextNode(result.products[0].name + " (Product ID: " + prodId +")");
@@ -23,7 +23,7 @@ $(document).ready(function(){
      
     $('[type*="radio"]').change(function () {
         var value = $(this).attr('value');
-        console.log("rating is " + document.forms['rate_form'].elements["rating"].value);
+        //console.log("rating is " + document.forms['rate_form'].elements["rating"].value);
         $("#rate").val(value);
     });
     

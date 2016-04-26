@@ -6,9 +6,9 @@ $(document).ready(function(){
      //var href = "https://api.bestbuy.com/v1/products(categoryPath.id=" + productId + ")?format=json&apiKey=";
      var href = "https://parkland-csc175.github.io/csc175data/bestbuy/products-list.json";
      $.get(href, function(result){
-         console.log(result);
+         //console.log(result);
           result.products.forEach(function(post){
-              console.log(post);
+              //console.log(post);
               var $li = $("<li></li>");
               var $text1 = $("<text />").text(post.manufacturer);
               var $a = $("<a />").attr('href', "#").attr("sku", post.sku).attr("data-id", post.productId).text(post.name);
@@ -18,10 +18,10 @@ $(document).ready(function(){
           
          $("#product-category").on("click", "a", function(event){    
             var $linkClicked = $(event.target);    
-            console.log($linkClicked);
+            //console.log($linkClicked);
             if($linkClicked !== undefined || $linkClicked !== null){
                 var $prodId = $linkClicked.data("id");
-                console.log($prodId);
+                //console.log($prodId);
                 sessionStorage.setItem("prodId", $prodId);
                 this.href = "product-details.html";
             }            

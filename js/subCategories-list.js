@@ -8,9 +8,9 @@ $(document).ready(function(){
     var href = "";
     if(dataId){
           $.get(href, function(result){
-         console.log(result);
+         //console.log(result);
           result.categories[0].subCategories.forEach(function(post){
-              console.log(post);
+              //console.log(post);
               var $li = $("<li></li>");
               var $a = $("<a />").attr('href', "#").attr("data-id", post.id).text(post.name);
               $li.append($a);
@@ -19,9 +19,9 @@ $(document).ready(function(){
           
          $("#sub-category").on("click", "a", function(event){    
             var $linkClicked = $(event.target);    
-            console.log($linkClicked);
+            //console.log($linkClicked);
             var $proId = $linkClicked.data("id");
-            console.log($proId);
+            //console.log($proId);
             sessionStorage.setItem("productId", $proId);
             this.href = "product-list.html";
             
