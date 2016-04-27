@@ -1,6 +1,6 @@
 $(document).ready(function(){
     var prodId = sessionStorage.getItem("prodId");
-    var $ul = $("#product-detail");
+    //var $ul = $("#product-detail");
     var apiKey = null;
     var url = getUrl();
     
@@ -12,10 +12,10 @@ $(document).ready(function(){
          //console.log("Name- " + result.products[0].name + " Regular Price- " + result.products[0].regularPrice);
          //console.log("Brand- " + result.products[0].manufacturer + " Sale Price- " + result.products[0].salePrice);  
         $(".img-responsive").attr("src", result.products[0].image);
-        var $li = $("<li></li>");
+        //var $li = $("<li></li>");
         var prodName = document.createTextNode(result.products[0].name + " (Product ID: " + prodId +")");
         var t1 = document.createTextNode( "$ " + result.products[0].salePrice);
-        var t2 = document.createTextNode(" Brand- " + result.products[0].manufacturer);
+        //var t2 = document.createTextNode(" Brand- " + result.products[0].manufacturer);
         $name.append(prodName); 
         $divprice.append(t1); 
          
@@ -27,6 +27,7 @@ $(document).ready(function(){
         if(href){
          $.get(href, function(result1){
              
+             $("#comment").text(result1.total + " comments"); 
              result1.reviews.forEach(function(post){
                  //console.log(post);
                  var $divRow = $("<div></div>").attr("class", "row");
@@ -44,10 +45,10 @@ $(document).ready(function(){
                  }
                      
                  if (post.rating == 5)
-                    $spanFilled.text(" " +  post.reviewer[0].name);
+                    $spanFilled.text(" " +  post.reviewer[0].name + "   ");
                  else
-                    $spanEmpty.text(" " +  post.reviewer[0].name);
-                    
+                    $spanEmpty.text(" " +  post.reviewer[0].name + "   ");
+                   
                  var $time = $(document.createTextNode(post.submissionTime));
                  $divCol.append($time);   
                     
@@ -59,7 +60,6 @@ $(document).ready(function(){
          });
         }
      });
-     
      $("#productId").val(prodId);
      
     $('[type*="radio"]').change(function () {
@@ -67,6 +67,7 @@ $(document).ready(function(){
         //console.log("rating is " + document.forms['rate_form'].elements["rating"].value);
         $("#rate").val(value);
     });
+    
      $("#email_form").validate({
          rules:{
              "email": {
@@ -112,23 +113,18 @@ $(document).ready(function(){
                  required: "Please enter your comment here."  
              }
         }
-<<<<<<< HEAD
      });    
-=======
-     });   
->>>>>>> origin/gh-pages
      
     $('.btn').on('click',"button", function() {
         $("#email_form").valid();
         alert("Comments take upto 48 hours to be reviewed before being posted to the site.");
     });
-<<<<<<< HEAD
     
    function getUrl(){
         var api = apiKey || localStorage.getItem("BEST_BUY_API_KEY");
         //console.log("apiKey is : " + api);
         if(api !== "null")
-            return "https://api.bestbuy.com/v1/products(productId=" + prodId + ")?format=json&apiKey=" + apiKey;
+            return "https://api.bestbuy.com/v1/products(productId=" + prodId + ")?format=json&apiKey=" + api;
         else
             return "https://parkland-csc175.github.io/csc175data/bestbuy/product-details-4506800.json";
     }
@@ -136,21 +132,15 @@ $(document).ready(function(){
         var api = apiKey || localStorage.getItem("BEST_BUY_API_KEY");
         //console.log("apiKey is : " + api);
         if(api !== "null")
-            return "http://api.bestbuy.com/v1/reviews(sku=" + sku + ")?format=json&apiKey=" + apiKey;
+            return "http://api.bestbuy.com/v1/reviews(sku=" + sku + ")?format=json&apiKey=" + api;
         else
-            return false;
+            return "https://parkland-csc175.github.io/csc175data/bestbuy/product-reviews-4506800.json";
     }
 
 });
 
 function myFunction(){
     $("#email_form").valid();
-=======
-});
-
-function myFunction(){
-   // $("#email_form").valid();
->>>>>>> origin/gh-pages
     alert("Comments take upto 48 hours to be reviewed before being posted to the site.");
 };
 function goBack() {
