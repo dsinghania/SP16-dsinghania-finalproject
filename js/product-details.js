@@ -135,6 +135,7 @@ $(document).ready(function(){
     }
     function getReviewUrl(){
         var api = apiKey || localStorage.getItem("BEST_BUY_API_KEY");
+        var sku = sessionStorage.getItem("sku");
         //console.log("apiKey is : " + api);
         if(api !== "null")
             return "http://api.bestbuy.com/v1/reviews(sku=" + sku + ")?format=json&apiKey=" + api;
