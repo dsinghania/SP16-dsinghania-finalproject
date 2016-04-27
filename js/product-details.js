@@ -1,22 +1,63 @@
 $(document).ready(function(){
     var prodId = sessionStorage.getItem("prodId");
     var $ul = $("#product-detail");
+    var apiKey = null;
+    var url = getUrl();
     
-     //var href = "https://api.bestbuy.com/v1/products(productId=" + prodId + ")?format=json&apiKey=";
-     var href = "https://parkland-csc175.github.io/csc175data/bestbuy/product-details-4506800.json";
-     var $divprice = $("#price");
-     var $name = $("#name");
-     $.get(href, function(result){
+    var $divprice = $("#price");
+    var $name = $("#name");
+     
+     $.get(url, function(result){
          //console.log(result);
          //console.log("Name- " + result.products[0].name + " Regular Price- " + result.products[0].regularPrice);
          //console.log("Brand- " + result.products[0].manufacturer + " Sale Price- " + result.products[0].salePrice);  
-         $(".img-responsive").attr("src", result.products[0].image);
-         var $li = $("<li></li>");
-         var prodName = document.createTextNode(result.products[0].name + " (Product ID: " + prodId +")");
-         var t1 = document.createTextNode( "$ " + result.products[0].salePrice);
-         var t2 = document.createTextNode(" Brand- " + result.products[0].manufacturer);
-         $name.append(prodName); 
-         $divprice.append(t1); 
+        $(".img-responsive").attr("src", result.products[0].image);
+        var $li = $("<li></li>");
+        var prodName = document.createTextNode(result.products[0].name + " (Product ID: " + prodId +")");
+        var t1 = document.createTextNode( "$ " + result.products[0].salePrice);
+        var t2 = document.createTextNode(" Brand- " + result.products[0].manufacturer);
+        $name.append(prodName); 
+        $divprice.append(t1); 
+         
+        var $divWell = $(".well");    
+             
+        var sku = result.products[0].sku;
+        
+        var href = getReviewUrl();
+        if(href){
+         $.get(href, function(result1){
+             
+             result1.reviews.forEach(function(post){
+                 //console.log(post);
+                 var $divRow = $("<div></div>").attr("class", "row");
+                 var $divCol = $("<div></div>").attr("class", "col-md-12");
+                 $divWell.append($divRow);
+                 $divRow.append($divCol);
+                 for(var i = 1; i <= post.rating; i++){
+                     var $spanFilled = $("<span></span>").addClass("glyphicon glyphicon-star");                     
+                     $divCol.append($spanFilled);
+                 }
+                  
+                 for (var i = 5; i > post.rating; i--){
+                     var $spanEmpty = $("<span></span>").addClass("glyphicon glyphicon-star-empty");
+                     $divCol.append($spanEmpty);
+                 }
+                     
+                 if (post.rating == 5)
+                    $spanFilled.text(" " +  post.reviewer[0].name);
+                 else
+                    $spanEmpty.text(" " +  post.reviewer[0].name);
+                    
+                 var $time = $(document.createTextNode(post.submissionTime));
+                 $divCol.append($time);   
+                    
+                 var $p = $("<p></p>").text(post.comment);
+                 $divCol.append($p);
+                 var $hr = $("<hr>");
+                 $divCol.append($hr);
+             });
+         });
+        }
      });
      
      $("#productId").val(prodId);
@@ -73,14 +114,37 @@ $(document).ready(function(){
              }
         }
      });    
+     
+    $('.btn').on('click',"button", function() {
+        $("#email_form").valid();
+        alert("Comments take upto 48 hours to be reviewed before being posted to the site.");
+    });
+    
+   function getUrl(){
+        var api = apiKey || localStorage.getItem("BEST_BUY_API_KEY");
+        //console.log("apiKey is : " + api);
+        if(api !== "null")
+            return "https://api.bestbuy.com/v1/products(productId=" + prodId + ")?format=json&apiKey=" + apiKey;
+        else
+            return "https://parkland-csc175.github.io/csc175data/bestbuy/product-details-4506800.json";
+    }
+    function getReviewUrl(){
+        var api = apiKey || localStorage.getItem("BEST_BUY_API_KEY");
+        //console.log("apiKey is : " + api);
+        if(api !== "null")
+            return "http://api.bestbuy.com/v1/reviews(sku=" + sku + ")?format=json&apiKey=" + apiKey;
+        else
+            return false;
+    }
+
 });
 
-$('.btn').on('click',"button", function() {
+function myFunction(){
     $("#email_form").valid();
     alert("Comments take upto 48 hours to be reviewed before being posted to the site.");
-});
-
+};
 function goBack() {
     window.history.back();
 }
 
+//http://api.bestbuy.com/v1/reviews(sku=SKUNUMBER)?format=json&apiKey=XXXXX

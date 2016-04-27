@@ -3,11 +3,15 @@
 $(document).ready(function(){
     
     var dataId = sessionStorage.getItem("dataId");
-    var $ul = $("#sub-category");
-    //var href = "https://api.bestbuy.com/v1/categories(id=" + dataId + ")?format=json&apiKey=&show=subCategories";//add apikey
-    var href = "";
+    var $ul = $("#sub-category");   
+    var $divHeader = $("#head");
+    var $h1 = $("<h1></h1>");
+    $h1.html("Best Buy Sub-Categories List");
+    $divHeader.append($h1);
+    var apiKey = null;
+    var url = getUrl();
     if(dataId){
-          $.get(href, function(result){
+          $.get(url, function(result){
          //console.log(result);
           result.categories[0].subCategories.forEach(function(post){
               //console.log(post);
@@ -23,12 +27,20 @@ $(document).ready(function(){
             var $proId = $linkClicked.data("id");
             //console.log($proId);
             sessionStorage.setItem("productId", $proId);
-            this.href = "product-list.html";
-            
+            this.href = "products-list.html";            
          });
      });
    }
+   function getUrl(){
+        var api = apiKey || localStorage.getItem("BEST_BUY_API_KEY");
+        //console.log("apiKey is : " + api);
+        if(api !== "null")
+            return "https://api.bestbuy.com/v1/categories(id=" + dataId + ")?format=json&apiKey=" + apiKey + "&show=subCategories";
+        else
+            return "https://parkland-csc175.github.io/csc175data/bestbuy/category-subcategories-abcat0101000.json";
+    }
 });
+
 ///products-list.html?categoryId=30 (query string)
 //document.location.search will give categoryid=30
 //or
