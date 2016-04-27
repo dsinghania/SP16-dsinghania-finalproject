@@ -119,6 +119,7 @@ $(document).ready(function(){
         $("#email_form").valid();
         alert("Comments take upto 48 hours to be reviewed before being posted to the site.");
     });
+});  
     
    function getUrl(){
         var api = apiKey || localStorage.getItem("BEST_BUY_API_KEY");
