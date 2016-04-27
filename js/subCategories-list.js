@@ -9,6 +9,7 @@ $(document).ready(function(){
     $divHeader.append($h1);
     var apiKey = null;
     var url = getUrl();
+    console.log("url is " + url);
     if(dataId){
           $.get(url, function(result){
          //console.log(result);
