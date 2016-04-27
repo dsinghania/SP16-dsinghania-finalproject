@@ -24,6 +24,7 @@ $(document).ready(function(){
         var sku = result.products[0].sku;
         
         var href = getReviewUrl();
+        
         if(href){
          $.get(href, function(result1){
              
@@ -45,12 +46,16 @@ $(document).ready(function(){
                  }
                      
                  if (post.rating == 5)
-                    $spanFilled.text(" " +  post.reviewer[0].name + "   ");
+                    $spanFilled.text(" " +  post.reviewer[0].name);
                  else
-                    $spanEmpty.text(" " +  post.reviewer[0].name + "   ");
-                   
-                 var $time = $(document.createTextNode(post.submissionTime));
-                 $divCol.append($time);   
+                    $spanEmpty.text(" " +  post.reviewer[0].name);
+                    
+                 var dateToday = new Date().getTime(); 
+                 var commentTime = new Date(post.submissionTime).getTime();
+                 var  newTime = Math.round( (dateToday - commentTime) / (24 * 60 * 60 * 1000));
+                 var $divTime = $("<div></div>").addClass("pull-right").text(newTime + " days");
+                 //var $time = $(document.createTextNode(newTime + " days"));
+                 $divCol.append($divTime);   
                     
                  var $p = $("<p></p>").text(post.comment);
                  $divCol.append($p);
@@ -58,9 +63,9 @@ $(document).ready(function(){
                  $divCol.append($hr);
              });
          });
-        }
-     });
-     $("#productId").val(prodId);
+       }
+    });
+    $("#productId").val(prodId);
      
     $('[type*="radio"]').change(function() {
         var value = $(this).attr('value');
