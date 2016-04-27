@@ -22,7 +22,7 @@ $(document).ready(function(){
         var $divWell = $(".well");    
              
         var sku = result.products[0].sku;
-        
+        console.log("sku for this product is " + sku);
         var href = getReviewUrl(sku);
         
         if(href){
@@ -136,7 +136,7 @@ $(document).ready(function(){
     function getReviewUrl(sku){
         var api = apiKey || localStorage.getItem("BEST_BUY_API_KEY");
         //var sku = sessionStorage.getItem("sku");
-        //console.log("apiKey is : " + api);
+        console.log("apiKey is : " + api);
         if(api !== "null")
             return "http://api.bestbuy.com/v1/reviews(sku=" + sku + ")?format=json&apiKey=" + api;
         else
