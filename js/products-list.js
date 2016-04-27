@@ -45,6 +45,8 @@ $(document).ready(function(){
         if($linkClicked !== undefined || $linkClicked !== null){
             var $prodId = $linkClicked.data("id");
             console.log("prod id is " + $prodId);
+            var $sku = $linkClicked.sku;
+            sessionStorage.setItem("sku", $sku);
             sessionStorage.setItem("prodId", $prodId);
             this.href = "product-details.html";
         }    
