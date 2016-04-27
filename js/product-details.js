@@ -112,17 +112,9 @@ $(document).ready(function(){
                  required: "Please enter your comment here."  
              }
         }
-<<<<<<< HEAD
-     });    
-=======
      });   
->>>>>>> origin/gh-pages
+     });   
      
-    $('.btn').on('click',"button", function() {
-        $("#email_form").valid();
-        alert("Comments take upto 48 hours to be reviewed before being posted to the site.");
-    });
-<<<<<<< HEAD
     
    function getUrl(){
         var api = apiKey || localStorage.getItem("BEST_BUY_API_KEY");
@@ -142,15 +134,8 @@ $(document).ready(function(){
     }
 
 });
-
-function myFunction(){
-    $("#email_form").valid();
-=======
-});
-
 function myFunction(){
    // $("#email_form").valid();
->>>>>>> origin/gh-pages
     alert("Comments take upto 48 hours to be reviewed before being posted to the site.");
 };
 function goBack() {
