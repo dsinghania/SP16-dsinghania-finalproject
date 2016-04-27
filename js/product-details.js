@@ -26,10 +26,6 @@ $(document).ready(function(){
         //console.log("rating is " + document.forms['rate_form'].elements["rating"].value);
         $("#rate").val(value);
     });
-    function myFunction(){
-       // $("#email_form").valid();
-        alert("Comments take upto 48 hours to be reviewed before being posted to the site.");
-    };
      $("#email_form").validate({
          rules:{
              "email": {
@@ -83,6 +79,10 @@ $(document).ready(function(){
     });
 });
 
+function myFunction(){
+   // $("#email_form").valid();
+    alert("Comments take upto 48 hours to be reviewed before being posted to the site.");
+};
 function goBack() {
     window.history.back();
 }
