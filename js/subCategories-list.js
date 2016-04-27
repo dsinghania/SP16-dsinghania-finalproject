@@ -10,7 +10,8 @@ $(document).ready(function(){
     var apiKey = null;
     var url = getUrl();
     console.log("url is " + url);
-    if(dataId){
+    console.log("data id is " + dataId);
+    if(dataId !== "null"){
           $.get(url, function(result){
          //console.log(result);
           result.categories[0].subCategories.forEach(function(post){
