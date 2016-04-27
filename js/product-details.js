@@ -112,8 +112,7 @@ $(document).ready(function(){
                  required: "Please enter your comment here."  
              }
         }
-     });   
-     });   
+     });  
      
     
    function getUrl(){
