@@ -126,10 +126,10 @@ $(document).ready(function(){
     });
     
    function getUrl(){
-        var api = apiKey || localStorage.getItem("BEST_BUY_API_KEY");
-        console.log("apiKey is : " + api);
-        if(api !== null)
-            return "https://api.bestbuy.com/v1/products(productId=" + prodId + ")?format=json&apiKey=" + api;
+        var apik = apiKey || localStorage.getItem("BEST_BUY_API_KEY");
+        console.log("apiKey is : " + apik);
+        if(apik !== null)
+            return "https://api.bestbuy.com/v1/products(productId=" + prodId + ")?format=json&apiKey=" + apik;
         else
             return "https://parkland-csc175.github.io/csc175data/bestbuy/product-details-4506800.json";
     }
