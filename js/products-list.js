@@ -54,7 +54,7 @@ $(document).ready(function(){
    function getUrl(){
         var api = apiKey || localStorage.getItem("BEST_BUY_API_KEY");
         //console.log("apiKey is : " + api);
-        if(api !== "null")
+        if(api !== null)
             return "https://api.bestbuy.com/v1/products(categoryPath.id=" + productId + ")?page=1&format=json&apiKey=" + api;
         else
             return "https://parkland-csc175.github.io/csc175data/bestbuy/products-list.json";
