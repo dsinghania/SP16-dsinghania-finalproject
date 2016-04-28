@@ -128,7 +128,7 @@ $(document).ready(function(){
    function getUrl(){
         var api = apiKey || localStorage.getItem("BEST_BUY_API_KEY");
         //console.log("apiKey is : " + api);
-        if(api !== "null")
+        if(api !== null)
             return "https://api.bestbuy.com/v1/products(productId=" + prodId + ")?format=json&apiKey=" + api;
         else
             return "https://parkland-csc175.github.io/csc175data/bestbuy/product-details-4506800.json";
@@ -137,7 +137,7 @@ $(document).ready(function(){
         var api = apiKey || localStorage.getItem("BEST_BUY_API_KEY");
         //var sku = sessionStorage.getItem("sku");
         console.log("apiKey is : " + api);
-        if(api !== "null")
+        if(api !== null)
             return "http://api.bestbuy.com/v1/reviews(sku=" + sku + ")?format=json&apiKey=" + api;
         else
             return "https://parkland-csc175.github.io/csc175data/bestbuy/product-reviews-4506800.json";
