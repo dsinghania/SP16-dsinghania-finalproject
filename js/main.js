@@ -42,7 +42,7 @@ $(document).ready(function(){
     function getUrl(page){
         var api = apiKey || localStorage.getItem("BEST_BUY_API_KEY");
         //console.log("apiKey is : " + api);
-        if(api !== "null")
+        if(api !== null)
             return page + "&apiKey=" + api;
         else
             return "https://parkland-csc175.github.io/csc175data/bestbuy/categories-list.json";
