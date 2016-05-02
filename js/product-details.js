@@ -27,10 +27,10 @@ $(document).ready(function(){
         
         if(href){
          $.get(href, function(result1){
-             
+             console.log(result1);
              $("#comment").text(result1.total + " comments"); 
              result1.reviews.forEach(function(post){
-                 //console.log(post);
+                 console.log(post);
                  var $divRow = $("<div></div>").attr("class", "row");
                  var $divCol = $("<div></div>").attr("class", "col-md-12");
                  $divWell.append($divRow);
