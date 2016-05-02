@@ -20,11 +20,11 @@ $(document).ready(function(){
             var total = Number(sessionStorage.getItem("totalPages"));
             if(nextPage > total){
                 alert("You are on the last page");
-                var href = "https://api.bestbuy.com/v1/products(categoryPath.id=" + productId + ")?page=" + total + "&format=json&apiKey=" + api;
+                var href = "//api.bestbuy.com/v1/products(categoryPath.id=" + productId + ")?page=" + total + "&format=json&apiKey=" + api;
                 showData(href);   
             }else{
                 sessionStorage.setItem("currentPage", nextPage);
-                var url = "https://api.bestbuy.com/v1/products(categoryPath.id=" + productId + ")?page=" + nextPage + "&format=json&apiKey=" + api;
+                var url = "//api.bestbuy.com/v1/products(categoryPath.id=" + productId + ")?page=" + nextPage + "&format=json&apiKey=" + api;
                 showData(url);
             }
         }
@@ -32,12 +32,12 @@ $(document).ready(function(){
             var prevPage = Number(sessionStorage.getItem("currentPage")) - 1;
             if(prevPage === 0){
                 alert("You are on the first page");  
-                var href = "https://api.bestbuy.com/v1/products(categoryPath.id=" + productId + ")?page=1&format=json&apiKey=" + api;
+                var href = "//api.bestbuy.com/v1/products(categoryPath.id=" + productId + ")?page=1&format=json&apiKey=" + api;
                 showData(href);               
             }
             else {
                 sessionStorage.setItem("currentPage", prevPage);
-                var url = "https://api.bestbuy.com/v1/products(categoryPath.id=" + productId + ")?page=" + prevPage + "&format=json&apiKey=" + api;
+                var url = "//api.bestbuy.com/v1/products(categoryPath.id=" + productId + ")?page=" + prevPage + "&format=json&apiKey=" + api;
                 showData(url);                
             }
         }
@@ -59,9 +59,9 @@ $(document).ready(function(){
         var api = apiKey || localStorage.getItem("BEST_BUY_API_KEY");
         //console.log("apiKey is : " + api);
         if(api !== null)
-            return "https://api.bestbuy.com/v1/products(categoryPath.id=" + productId + ")?page=1&format=json&apiKey=" + api;
+            return "//api.bestbuy.com/v1/products(categoryPath.id=" + productId + ")?page=1&format=json&apiKey=" + api;
         else
-            return "https://parkland-csc175.github.io/csc175data/bestbuy/products-list.json";
+            return "//parkland-csc175.github.io/csc175data/bestbuy/products-list.json";
     }
 function showData(url){
     $.get(url, function (result) {
