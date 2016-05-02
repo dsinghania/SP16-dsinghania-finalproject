@@ -86,6 +86,7 @@ function showData(url){
         $trhead.append($th4);
         
         result.products.forEach(function (post) {
+            console.log(post.thumbnailImage);
             var $tbody = $("<tbody></tbody>");
             $table.append($tbody);
             var $tr = $("<tr></tr>");
