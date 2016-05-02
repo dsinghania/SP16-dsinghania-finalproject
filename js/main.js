@@ -6,7 +6,7 @@ $(document).ready(function(){
         apiKey = prompt("Please Enter your API Key");
         localStorage.setItem("BEST_BUY_API_KEY", apiKey);
     });
-    var page = "https://api.bestbuy.com/v1/categories(id=pcmcat209400050001|id=abcat0501000|id=abcat0401000"+
+    var page = "//api.bestbuy.com/v1/categories(id=pcmcat209400050001|id=abcat0501000|id=abcat0401000"+
                 "|id=pcmcat242800050021|id=abcat0204000|id=pcmcat241600050001|id=pcmcat254000050002|id=pcmcat209000050006" +
                 "|id=abcat0502000|id=pcmcat232900050000|id=pcmcat295700050012|id=pcmcat310200050004|id=pcmcat243400050029" + 
                 "|id=abcat0904000|id=abcat0901000|id=abcat0912000|id=abcat0101000|id=abcat0910000|id=pcmcat273800050036)" +
@@ -27,7 +27,7 @@ $(document).ready(function(){
      
      var newUrl = getUrl(page2);
      //console.log("url is " + url);
-     if(url !== "https://parkland-csc175.github.io/csc175data/bestbuy/categories-list.json")
+     if(url !== "//parkland-csc175.github.io/csc175data/bestbuy/categories-list.json")
         addData(newUrl);
      
     $("#category").on("click", "a", function(event){    
@@ -45,7 +45,7 @@ $(document).ready(function(){
         if(api !== "null")
             return page + "&apiKey=" + api;
         else
-            return "https://parkland-csc175.github.io/csc175data/bestbuy/categories-list.json";
+            return "//parkland-csc175.github.io/csc175data/bestbuy/categories-list.json";
     }
     
     function addData(url){
