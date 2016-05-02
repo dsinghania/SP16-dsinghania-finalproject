@@ -138,7 +138,7 @@ $(document).ready(function(){
         //var sku = sessionStorage.getItem("sku");
         console.log("apiKey is : " + api);
         if(api !== null)
-            return "http://api.bestbuy.com/v1/reviews(sku=" + sku + ")?format=json&apiKey=" + api;
+            return "http://api.bestbuy.com/v1/reviews(sku=" + sku + ")?format=json&sort=.asc&apiKey=" + api;
         else
             return "https://parkland-csc175.github.io/csc175data/bestbuy/product-reviews-4506800.json";
     }
