@@ -6,7 +6,11 @@ $(document).ready(function(){
     var api = apiKey || localStorage.getItem("BEST_BUY_API_KEY");
     var url = getUrl();
     showData(url);
-    
+      
+    var $divHeader = $("#head");
+    var $h1 = $("<h1></h1>");
+    $h1.html("Best Buy Products List");
+    $divHeader.append($h1);
     $(".container").on("click", "button", function(e){
         var $buttonClicked = $(this).data("action");
         console.log($buttonClicked);
