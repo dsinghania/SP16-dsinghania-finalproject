@@ -36,14 +36,8 @@ $(document).ready(function(){
         var api = apiKey || localStorage.getItem("BEST_BUY_API_KEY");
         console.log("apiKey is : " + api);
         if(api !== null)
-            return "//api.bestbuy.com/v1/categories(id=" + dataId + ")?format=json&apiKey=" + api + "&show=subCategories";
+            return "http://api.bestbuy.com/v1/categories(id=" + dataId + ")?format=json&apiKey=" + api + "&show=subCategories";
         else
-            return "//parkland-csc175.github.io/csc175data/bestbuy/category-subcategories-abcat0101000.json";
+            return "http://parkland-csc175.github.io/csc175data/bestbuy/category-subcategories-abcat0101000.json";
     }
 });
-
-///products-list.html?categoryId=30 (query string)
-//document.location.search will give categoryid=30
-//or
-//single page application model (SPA)
-//

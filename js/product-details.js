@@ -1,6 +1,5 @@
 $(document).ready(function(){
     var prodId = sessionStorage.getItem("prodId");
-    //var $ul = $("#product-detail");
     var apiKey = null;
     var url = getUrl();
     
@@ -9,13 +8,9 @@ $(document).ready(function(){
      
      $.get(url, function(result){
          //console.log(result);
-         //console.log("Name- " + result.products[0].name + " Regular Price- " + result.products[0].regularPrice);
-         //console.log("Brand- " + result.products[0].manufacturer + " Sale Price- " + result.products[0].salePrice);  
         $(".img-responsive").attr("src", result.products[0].image);
-        //var $li = $("<li></li>");
         var prodName = document.createTextNode(result.products[0].name + " (Product ID: " + prodId +")");
         var t1 = document.createTextNode( "$ " + result.products[0].salePrice);
-        //var t2 = document.createTextNode(" Brand- " + result.products[0].manufacturer);
         $name.append(prodName); 
         $divprice.append(t1); 
          
@@ -54,7 +49,6 @@ $(document).ready(function(){
                  var commentTime = new Date(post.submissionTime).getTime();
                  var  newTime = Math.round( (dateToday - commentTime) / (24 * 60 * 60 * 1000));
                  var $divTime = $("<div></div>").addClass("pull-right").text(newTime + " days");
-                 //var $time = $(document.createTextNode(newTime + " days"));
                  $divCol.append($divTime);   
                     
                  var $p = $("<p></p>").text(post.comment);
@@ -129,18 +123,18 @@ $(document).ready(function(){
         var apik = apiKey || localStorage.getItem("BEST_BUY_API_KEY");
         console.log("apiKey is : " + apik);
         if(apik !== null)
-            return "//api.bestbuy.com/v1/products(productId=" + prodId + ")?format=json&apiKey=" + apik;
+            return "http://api.bestbuy.com/v1/products(productId=" + prodId + ")?format=json&apiKey=" + apik;
         else
-            return "//parkland-csc175.github.io/csc175data/bestbuy/product-details-4506800.json";
+            return "http://parkland-csc175.github.io/csc175data/bestbuy/product-details-4506800.json";
     }
     function getReviewUrl(sku){
         var api = apiKey || localStorage.getItem("BEST_BUY_API_KEY");
         //var sku = sessionStorage.getItem("sku");
         console.log("apiKey is : " + api);
         if(api !== null)
-            return "//api.bestbuy.com/v1/reviews(sku=" + sku + ")?format=json&apiKey=" + api;
+            return "http://api.bestbuy.com/v1/reviews(sku=" + sku + ")?format=json&apiKey=" + api;
         else
-            return "//parkland-csc175.github.io/csc175data/bestbuy/product-reviews-4506800.json";
+            return "http://parkland-csc175.github.io/csc175data/bestbuy/product-reviews-4506800.json";
     }
 
 });
@@ -152,5 +146,3 @@ function myFunction(){
 function goBack() {
     window.history.back();
 }
-
-//http://api.bestbuy.com/v1/reviews(sku=SKUNUMBER)?format=json&apiKey=XXXXX
