@@ -9,7 +9,7 @@ $(document).ready(function(){
      $.get(url, function(result){
          //console.log(result);
         $(".img-responsive").attr("src", result.products[0].image);
-        var prodName = document.createTextNode(result.products[0].name + " (Product ID: " + prodId +")");
+        var prodName = document.createTextNode(result.products[0].name);
         var t1 = document.createTextNode( "$ " + result.products[0].salePrice);
         $name.append(prodName); 
         $divprice.append(t1); 
