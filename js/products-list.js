@@ -102,8 +102,8 @@ function showData(url){
         });
     });
 }
-});
-
 function goBack() {
     window.history.back();
 }
+});
+
