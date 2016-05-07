@@ -40,8 +40,7 @@ $(document).ready(function(){
                 var url = "http://api.bestbuy.com/v1/products(categoryPath.id=" + productId + ")?page=" + prevPage + "&format=json&apiKey=" + api;
                 showData(url);                
             }
-        }        
-        <button title="Go Back to Products List page" class="pull-right" onclick="goBack()">Go Back</button>
+        } 
     });
          
     $(".row").on("click", "a", function(event){    
