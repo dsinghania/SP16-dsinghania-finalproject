@@ -63,47 +63,46 @@ $(document).ready(function(){
         else
             return "http://parkland-csc175.github.io/csc175data/bestbuy/products-list.json";
     }
-function showData(url){
-    $.get(url, function (result) {
-        console.log(result);
-        console.log("number  of pages is : " + result.totalPages);
-        var numPages = result.totalPages;
-        sessionStorage.setItem("totalPages", numPages);
-        var $row = $(".row");
-        var $table = $("<table></table>").addClass("table").addClass("table-striped").addClass("table-hover");
-        $row.append($table);
-        var $thead = $("<thead></thead>");
-        $table.append($thead);
-        var $trhead = $("<tr></tr>");
-        $thead.append($trhead);
-        var $th1 = $("<th></th>").text("Image");
-        var $th2 = $("<th></th>").text("Name");
-        var $th3 = $("<th></th>").text("Price");
-        var $th4 = $("<th></th>");
-        $trhead.append($th1);
-        $trhead.append($th2);
-        $trhead.append($th3);
-        $trhead.append($th4);
-        
-        result.products.forEach(function (post) {
-            console.log(post.thumbnailImage);
-            var $tbody = $("<tbody></tbody>");
-            $table.append($tbody);
-            var $tr = $("<tr></tr>");
-            var $img = $("<img>").attr("src", post.thumbnailImage);
-            var $td2 = $("<td></td>").attr("id", "name").text(post.name);
-            var $td3 = $("<td></td>").attr("id", "price").text(post.salePrice);
-            var $a = $("<a></a>").attr("href", "#").attr("sku", post.sku).attr("data-id", post.productId).text("Click to view");
-            $tr.append($img);
-            $tr.append($td2);
-            $tr.append($td3);
-            $tr.append($a);
-            $tbody.append($tr);
+    function showData(url){
+        $.get(url, function (result) {
+            console.log(result);
+            console.log("number  of pages is : " + result.totalPages);
+            var numPages = result.totalPages;
+            sessionStorage.setItem("totalPages", numPages);
+            var $row = $(".row");
+            var $table = $("<table></table>").addClass("table").addClass("table-striped").addClass("table-hover");
+            $row.append($table);
+            var $thead = $("<thead></thead>");
+            $table.append($thead);
+            var $trhead = $("<tr></tr>");
+            $thead.append($trhead);
+            var $th1 = $("<th></th>").text("Image");
+            var $th2 = $("<th></th>").text("Name");
+            var $th3 = $("<th></th>").text("Price");
+            var $th4 = $("<th></th>");
+            $trhead.append($th1);
+            $trhead.append($th2);
+            $trhead.append($th3);
+            $trhead.append($th4);
+            
+            result.products.forEach(function (post) {
+                console.log(post.thumbnailImage);
+                var $tbody = $("<tbody></tbody>");
+                $table.append($tbody);
+                var $tr = $("<tr></tr>");
+                var $img = $("<img>").attr("src", post.thumbnailImage);
+                var $td2 = $("<td></td>").attr("id", "name").text(post.name);
+                var $td3 = $("<td></td>").attr("id", "price").text(post.salePrice);
+                var $a = $("<a></a>").attr("href", "#").attr("sku", post.sku).attr("data-id", post.productId).text("Click to view");
+                $tr.append($img);
+                $tr.append($td2);
+                $tr.append($td3);
+                $tr.append($a);
+                $tbody.append($tr);
+            });
         });
-    });
-}
+    }
+});
 function goBack() {
     window.history.back();
 }
-});
-
